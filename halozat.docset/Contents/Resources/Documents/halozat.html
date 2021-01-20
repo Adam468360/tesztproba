@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Halozatok jegyzet</title>
+</head>
+<body>
+   <div>
+    <h3>
+<h2># 1.lépés: Gépeknek statikus ip beállítása, ha van.</h2>
+<h2># Szervez ip cím beállítása</h2>
+<h2># routerek beállítása:</h2>
+<h2># hostname:</h2>
+n
+<br>
+ena
+<br>
+conf t
+<br>
+hostname router_név
+<br>
+<h2># jelszó beállítások:</h2>
+enable password jelszo
+<br>
+service password-encryption
+<br>
+line console 0
+<br>
+password jelszo
+<br>
+login
+<br>
+exit
+<br>
+line vty 0 4
+<br>
+password jelszo
+<br>
+login
+<br>
+exit
+<br>
+banner motd cbelépés csak engedéllyel!c
+<br>
+<h2>#interface beáálítások:</h2>
+int g0/0
+<br>
+ip address ip_cím mask
+<br>
+description szöveg
+<br>
+no shut
+<br>
+exit
+<br>
+<h2># statikus routing:</h2>
+ip route ip_tartomány mask ip_v_név_interface
+<br>
+<h2># rip protokoll:</h2>
+router rip
+<br>
+version 2
+<br>
+network ip_tartomány
+<br>
+passive-interface g0/0
+<br>
+exit
+<br>
+<h2># dhcp szerver beállítása:</h2>
+ip dhcp excluded-address ip_cím_től ip_cím_ig
+<br>
+ip dhcp pool alhálózat_neve
+<br>
+network ip mask
+<br>
+default-router ip
+<br>
+dns-server ip
+<br>
+<h2>#configuráció mentése:</h2>
+copy run start
+<br>
+<h2>#mentése a szerverre:</h2>
+copy run tftp
+<br>
+copy start tftp
+<br>
+server ip
+<br>
+fájl név
+<br>
+<h2>#betöltése szerverről:</h2>
+copy tftp run
+<br>
+server ip
+<br>
+fájl név
+<br>
+új fájl név
+<br>
+<h2>#kofiguráció törlése:</h2>
+erase start
+<br>
+<h2>#újratöltés/újraindítás:</h2>
+reload
+<br>
+<h2>#show parancsok:</h2>
+sh run
+<br>
+sh start
+<br>
+sh interfaces
+<br>
+sh interfaces g0/0
+<br>
+sh ip route
+<br>
+sh version
+<br>
+sh ip dhcp binding
+<br>
+<h2># dhcp kiosztás:</h2>
+Pl: PC0 -> desktop -> ip configuration -> dhcp
+<br>
+<h2># wlan beállítása:</h2>
+Router kezelő felületén: Config->GUI
+<br>
+Internet Setup->static ip + mask+ gateway+ dns
+<br>
+Network setup: ip + dhcp enable + mask + start ip + number of uses+ static dns
+<br>
+Wireless: 2.4ghz ssid: cím + 5ghz ssid: cím_5g
+<br>
+Wireless Security: 2.4ghz WPA2Personal AES - jelszo(8karakter) + 5ghz WPA2Personal AES - jelszo(8karakter)
+<br>
+<h2># laptopok kártyájának cseréje:</h2>
+laptop->physical->pwoer off->kártya csere (1W-AC)-ra ->power on
+<br>
+laptop->config->wireless0->ssid: cím + WPA2-PSK: jelszo + dhcp
+<br>
+End
+</h3>
+</div>
+</body>
+</html>
+ 
